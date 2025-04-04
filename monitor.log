@@ -1,72 +1,30 @@
-[2025-04-04 14:03:09,378] ERROR - no such table: oauth_providers
-[2025-04-04 14:03:09,395] ERROR - No existe la configuración para Otro
-[2025-04-04 14:03:09,399] ERROR - No Google config file found
-[2025-04-04 14:03:09,399] ERROR - No Microsoft config file found
-[2025-04-04 14:03:09,400] ERROR - no such column: ap.smtp_server
-[2025-04-04 14:03:09,400] ERROR - No existe la configuración
-[2025-04-04 14:03:11,675] INFO - Starting service...
-[2025-04-04 14:03:11,676] INFO - Stopping monitor...
-[2025-04-04 14:03:15,133] ERROR - Error stopping monitor.
-[2025-04-04 14:03:23,332] INFO - Stopping monitor...
-[2025-04-04 14:03:26,735] ERROR - Error stopping monitor.
-[2025-04-04 14:03:30,083] INFO - Finalizado
-[2025-04-04 14:05:02,134] ERROR - no such column: op.smtp_server
-[2025-04-04 14:05:02,141] ERROR - No Google config file found
-[2025-04-04 14:05:02,141] ERROR - No Microsoft config file found
-[2025-04-04 14:05:02,142] ERROR - no such column: ap.smtp_server
-[2025-04-04 14:05:02,142] ERROR - No existe la configuración
-[2025-04-04 14:05:04,746] INFO - Starting service...
-[2025-04-04 14:05:04,746] INFO - Stopping monitor...
-[2025-04-04 14:05:08,353] ERROR - Error stopping monitor.
-[2025-04-04 14:05:14,542] INFO - Starting service...
-[2025-04-04 14:05:14,542] INFO - Stopping monitor...
-[2025-04-04 14:05:17,937] ERROR - Error stopping monitor.
-[2025-04-04 14:05:19,605] INFO - Starting service...
-[2025-04-04 14:05:19,606] INFO - Stopping monitor...
-[2025-04-04 14:05:23,007] ERROR - Error stopping monitor.
-[2025-04-04 14:05:24,818] INFO - Stopping monitor...
-[2025-04-04 14:05:28,204] ERROR - Error stopping monitor.
-[2025-04-04 14:05:33,868] INFO - Starting service...
-[2025-04-04 14:05:33,868] INFO - Stopping monitor...
-[2025-04-04 14:05:37,282] ERROR - Error stopping monitor.
-[2025-04-04 14:06:08,646] ERROR - No Google config file found
-[2025-04-04 14:06:08,647] ERROR - No Microsoft config file found
-[2025-04-04 14:06:12,120] INFO - Starting service...
-[2025-04-04 14:06:12,120] INFO - Stopping monitor...
-[2025-04-04 14:06:15,504] ERROR - Error stopping monitor.
-[2025-04-04 14:06:15,505] ERROR - No Google config file found
-[2025-04-04 14:06:15,505] ERROR - No Microsoft config file found
-[2025-04-04 14:06:15,506] INFO - mon\pcountermailmonitorgnsys.exe
-[2025-04-04 14:06:16,359] INFO - Monitor started
-[2025-04-04 14:06:16,359] INFO - Monitoreo iniciado en jonas4784@gmail.com
-[2025-04-04 14:06:16,360] INFO - Allowed domains['hotmail.com']
-[2025-04-04 14:06:16,360] INFO - Default printer Microsoft Print to PDF
-[2025-04-04 14:06:16,360] INFO - Clear files 1
-[2025-04-04 14:06:16,360] INFO - user jonas4784@gmail.com
-[2025-04-04 14:06:17,813] INFO - @@ new connection Fri Apr  4 14:06:17 2025
-[2025-04-04 14:06:22,602] INFO - Finalizado
-[2025-04-04 14:06:27,008] ERROR - No Google config file found
-[2025-04-04 14:06:27,008] ERROR - No Microsoft config file found
-[2025-04-04 14:06:29,561] INFO - Stopping monitor...
-[2025-04-04 14:06:37,973] INFO - Starting service...
-[2025-04-04 14:06:37,975] INFO - Stopping monitor...
-[2025-04-04 14:06:41,378] ERROR - Error stopping monitor.
-[2025-04-04 14:06:41,379] ERROR - No Google config file found
-[2025-04-04 14:06:41,379] ERROR - No Microsoft config file found
-[2025-04-04 14:06:41,380] INFO - mon\pcountermailmonitorgnsys.exe
-[2025-04-04 14:06:41,553] INFO - Monitor started
-[2025-04-04 14:06:41,554] INFO - Monitoreo iniciado en jonas4784@gmail.com
-[2025-04-04 14:06:41,554] INFO - Allowed domains['hotmail.com']
-[2025-04-04 14:06:41,554] INFO - Default printer Microsoft Print to PDF
-[2025-04-04 14:06:41,554] INFO - Clear files 1
-[2025-04-04 14:06:41,554] INFO - user jonas4784@gmail.com
-[2025-04-04 14:06:42,972] INFO - @@ new connection Fri Apr  4 14:06:42 2025
-[2025-04-04 14:07:43,913] WARNING - Mail from not allowed domain-> 2025-04-04 13:25:10-06:00 Jonathan, vive Minecraft en Funciones Relajadas 🎮 info@promocinepolis.com 43740
-[2025-04-04 14:07:44,306] WARNING - Mail from not allowed domain-> 2025-04-04 15:03:55-05:00 Última chance para registrarse en el seminario web | Unificar su plataforma de datos inteligentes y análisis azure@email.microsoft.com 43741
-[2025-04-04 14:07:44,761] INFO - -> 2025-04-04 20:08:00+00:00 Fw:  jonaiap@hotmail.com 43742
-[2025-04-04 14:07:44,763] INFO - Imprimiendo C:\Users\Jonas\PycharmProjects\mailmonitorwin\build\mailmonitor/jonaiap\jonaiap20080004042025GnSys-Kyocera Fleet Service-Requerimientos.pdf
-[2025-04-04 14:07:56,890] INFO - Limpiando el directorio ----- jonaiap
-[2025-04-04 14:07:56,900] INFO - Enviando correo de confirmación a jonaiap@hotmail.com... desde jonas4784@gmail.com
-[2025-04-04 14:07:59,468] INFO - Correo enviado correctamente
-[2025-04-04 14:08:28,570] INFO - Stopping monitor...
-[2025-04-04 14:08:33,991] INFO - Finalizado
+[2025-04-04 14:25:34,275] ERROR - no such table: oauth_providers
+[2025-04-04 14:25:34,291] ERROR - No existe la configuración para Otro
+[2025-04-04 14:25:34,295] ERROR - No Google config file found
+[2025-04-04 14:25:34,295] ERROR - No Microsoft config file found
+[2025-04-04 14:25:34,296] ERROR - no such column: ap.smtp_server
+[2025-04-04 14:25:34,296] ERROR - No existe la configuración
+[2025-04-04 14:25:51,866] ERROR - No Google config file found
+[2025-04-04 14:25:51,866] ERROR - No Microsoft config file found
+[2025-04-04 14:25:54,436] INFO - Starting service...
+[2025-04-04 14:25:54,436] INFO - Stopping monitor...
+[2025-04-04 14:25:57,835] ERROR - Error stopping monitor.
+[2025-04-04 14:25:57,836] ERROR - No Google config file found
+[2025-04-04 14:25:57,838] ERROR - No Microsoft config file found
+[2025-04-04 14:25:57,839] INFO - mon\pcountermailmonitorgnsys.exe
+[2025-04-04 14:25:59,202] INFO - Monitor started
+[2025-04-04 14:25:59,202] INFO - Monitoreo iniciado en jonas4784@gmail.com
+[2025-04-04 14:25:59,203] INFO - Allowed domains['hotmail.com']
+[2025-04-04 14:25:59,203] INFO - Default printer Microsoft Print to PDF
+[2025-04-04 14:25:59,203] INFO - Clear files 1
+[2025-04-04 14:25:59,203] INFO - user jonas4784@gmail.com
+[2025-04-04 14:26:00,673] INFO - @@ new connection Fri Apr  4 14:26:00 2025
+[2025-04-04 14:27:01,753] INFO - -> 2025-04-04 20:26:55+00:00 Fw:  jonaiap@hotmail.com 43743
+[2025-04-04 14:27:01,755] INFO - Imprimiendo C:\Users\Jonas\PycharmProjects\mailmonitorwin\build\mailmonitor/jonaiap\jonaiap20265504042025GnSys-Kyocera Fleet Service-Requerimientos.pdf
+[2025-04-04 14:27:11,414] INFO - Limpiando el directorio ----- jonaiap
+[2025-04-04 14:27:11,424] INFO - Enviando correo de confirmación a jonaiap@hotmail.com... desde jonas4784@gmail.com
+[2025-04-04 14:27:13,530] INFO - Correo enviado correctamente
+[2025-04-04 14:27:32,910] INFO - Stopping monitor...
+[2025-04-04 14:27:39,506] INFO - Stopping monitor...
+[2025-04-04 14:27:42,902] ERROR - Error stopping monitor.
+[2025-04-04 14:27:43,884] INFO - Finalizado
