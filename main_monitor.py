@@ -13,6 +13,8 @@ from logging.handlers import RotatingFileHandler
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.header import Header
+from email.utils import formataddr
 
 LOG_FILENAME = os.path.join(os.getcwd(), 'monitor.log')
 stdout_handler = logging.StreamHandler(stream=sys.stdout)
@@ -42,13 +44,13 @@ class MailMonitor():
         self.imap_port = imap_port
 
     def send_confirmation_mail(self, to, filelist):
-        logger.info(f'Enviando correo de confirmación a {to}...')
+        logger.info(f'Enviando correo de confirmación a {to}... desde {self.username}')
         sender = self.username
         receivers = [to]
         fl = [file[1] for file in filelist]
         files = '\n'.join(fl)
         msg = MIMEMultipart('alternative')
-        msg['From'] = f'From: {sender}'
+        msg['From'] = formataddr((str(Header('Mail Print', 'utf-8')), sender))
         msg['To'] = f'To <{to}>'
         msg['Subject'] = 'Confirmación de impresión'
         message = f"""
@@ -74,6 +76,8 @@ class MailMonitor():
             smtpObj.quit()
         except Exception as e:
             logger.error(e)
+            logger.error(f'Error al enviar correo de confirmación a {to}')
+        logger.info('Correo enviado correctamente')
 
 
 

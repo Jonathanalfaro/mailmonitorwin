@@ -8,7 +8,7 @@ from logging.handlers import RotatingFileHandler
 from tkinter import Tk, Widget, Button, Label, Entry, StringVar, BooleanVar, ttk, filedialog, IntVar, WORD, \
     END
 from tkinter.scrolledtext import ScrolledText
-
+import psutil
 import win32print
 from PIL import ImageTk, Image
 from pyexpat.errors import messages
@@ -20,7 +20,7 @@ stdout_handler = logging.StreamHandler(stream=sys.stdout)
 size_handler = RotatingFileHandler(LOG_FILENAME, backupCount=3, encoding='utf-8')
 handlers = [stdout_handler, size_handler]
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format='[%(asctime)s] %(levelname)s - %(message)s',
     handlers=handlers,
 )
@@ -149,32 +149,42 @@ def save_settings():
 
 def start_service():
     global procces_id
-    logger.info('Starting service...')
+    logger.info('Iniciando el servicio de monitoreo')
     error = save_settings()
     if error:
-        logger.error('Configure all settings')
+        logger.error('Ingrese todos los valores')
     else:
-        try:
-            cmd = "pcountermailmonitorgnsys.exe"
-            path_mm = os.path.join('mon',cmd)
-            cmds = shlex.split(cmd)
-            logger.info(path_mm)
-            pid = subprocess.Popen(path_mm, start_new_session=True, creationflags=subprocess.DETACHED_PROCESS)
-            logger.debug(f'Monitor started with PID {pid.pid}')
-        except Exception as e:
-            logger.error(e)
+        cmd = "pythonw main.py"
+        cmds = shlex.split(cmd)
+        if procces_id == -1:
+            pid = subprocess.Popen(cmds, start_new_session=True, creationflags=subprocess.DETACHED_PROCESS)
+            logger.info(f'Monitoreo creado con el PID {pid.pid}')
+            procces_id = pid.pid
+        else:
+            logger.info('Ya se está ejecutando el monitoreo')
 
 
 
 def stop_monitor():
-    logger.info('Stopping monitor...')
-    stop_command = 'TASKKILL /F /IM pcountermailmonitorgnsys.exe'
-    result = subprocess.run(stop_command, capture_output=True, text=True)
-    if result.stderr:
-        logger.error('Error stopping monitor.')
-    else:
-        logger.debug(f'Se finalizó el monitoreo')
+    global procces_id
+    stop_command = 'TASKKILL /F /IM pythonw.exe'
+    _result = subprocess.run(stop_command, capture_output=True, text=True)
+    try:
+        logger.info(f'Se finalizó el monitoreo')
+        procces_id = -1
+    except:
+        logger.info(f'No existe monitor funcionando')
 
+def search_monitor_pid():
+    global procces_id
+    try:
+        for p in psutil.process_iter():
+            if 'pythonw' in p.name():
+                logger.info(f'Monitor ejecutándose con pid {p.pid}')
+                procces_id = p.pid
+                break
+    except Exception as e:
+        logger.info(e)
 
 def on_change_provider(index, value, op):
     try:
@@ -189,6 +199,7 @@ def on_change_provider(index, value, op):
 
 def load_settings(global_settings):
     if global_settings:
+        search_monitor_pid()
         var_verypdf_folder.set(global_settings["verypdf_folder"])
         var_email.set(global_settings["application_user"])
         var_password.set(global_settings["application_password"])
