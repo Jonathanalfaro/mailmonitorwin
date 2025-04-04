@@ -128,7 +128,7 @@ def save_settings():
         id_provider = [x for x in PROVIDERS if x[1].lower() == var_provider.get().lower()]
         if id_provider:
             id_provider = id_provider[0][0]
-            db.insert_or_update_oauth_provider(var_provider.get(), var_imap_server.get(), var_imap_port.get())
+            db.insert_or_update_oauth_provider(var_provider.get(), var_imap_server.get(), var_imap_port.get(), var_smtp_server.get(), var_smtp_port.get())
         else:
             id_provider = None
         db.create_or_update_settings([
@@ -191,8 +191,12 @@ def on_change_provider(index, value, op):
         imap_server_conf = [x for x in PROVIDERS if x[1].lower() == var_provider.get().lower()]
         imap_server = imap_server_conf[0][2] if imap_server_conf[0][2] else ''
         imap_port = imap_server_conf[0][3] if imap_server_conf[0][3] else 0
+        smtp_server = imap_server_conf[0][4] if imap_server_conf[0][4] else 0
+        smtp_port = imap_server_conf[0][5] if imap_server_conf[0][5] else 0
         var_imap_server.set(imap_server)
         var_imap_port.set(imap_port)
+        var_smtp_server.set(smtp_server)
+        var_smtp_port.set(smtp_port)
     except IndexError as ie:
         logger.error('Error loading providers...')
 
@@ -209,6 +213,8 @@ def load_settings(global_settings):
         var_imap_server.set(global_settings["imap_server"])
         var_imap_port.set(global_settings["imap_port"])
         var_provider.set(global_settings["provider_name"])
+        var_smtp_server.set(global_settings["smtp_server"])
+        var_smtp_port.set(global_settings["smtp_port"])
 
 
 def get_providers():
@@ -263,6 +269,8 @@ if __name__ == '__main__':
     var_provider = StringVar()
     var_imap_server = StringVar()
     var_imap_port = IntVar()
+    var_smtp_server = StringVar()
+    var_smtp_port = IntVar()
     var_provider.trace('w', on_change_provider)
     var_email = StringVar()
     var_password = StringVar()
@@ -290,6 +298,18 @@ if __name__ == '__main__':
     container_imap.add_component_grid(entry_imap_server)
     container_imap.add_component_grid(lbl_imap_port)
     container_imap.add_component_grid(entry_imap_port)
+
+    #Sección configuracion SMTP
+    container_smtp = Container()
+    lbl_smtp_server = Label(container_smtp, text='SMTP:', width=(int(LABEL_WIDTH / 2) - 3))
+    entry_smtp_server = Entry(container_smtp, width=(int(ENTRY_WIDTH / 2) + 3), textvariable=var_smtp_server)
+    lbl_smtp_port = Label(container_smtp, text='Port SMTP:', width=(int(LABEL_WIDTH / 2) - 3))
+    entry_smtp_port = Entry(container_smtp, width=int(ENTRY_WIDTH / 2), textvariable=var_smtp_port)
+    container_smtp.add_component_grid(lbl_smtp_server)
+    container_smtp.add_component_grid(entry_smtp_server)
+    container_smtp.add_component_grid(lbl_smtp_port)
+    container_smtp.add_component_grid(entry_smtp_port)
+
 
     # Sección Correo
     container_email = Container()
@@ -382,6 +402,7 @@ if __name__ == '__main__':
     root.add_component_pack(tab_control)
     root.add_component_pack(container_provider)
     root.add_component_pack(container_imap)
+    root.add_component_pack(container_smtp)
     root.add_component_pack(container_email)
     root.add_component_pack(container_password)
     root.add_component_pack(container_printer)

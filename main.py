@@ -52,7 +52,8 @@ if __name__ == '__main__':
             mm = MailMonitor(username=result["application_user"], password=result["application_password"],
                              default_printer=result["printer"], verypdf_folder=result["verypdf_folder"],
                              allowed_domains=result["allowed_domains"], clean_attachments=result["clean_attachments"],
-                             imap_server=result["imap_server"], imap_port=result["imap_port"])
+                             imap_server=result["imap_server"], imap_port=result["imap_port"],
+                             smtp_server=result["smtp_server"], smtp_port=result["smtp_port"])
             mm.start_monitor()
         except Exception as e:
             logger.error(e)

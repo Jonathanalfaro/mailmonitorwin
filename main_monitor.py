@@ -33,7 +33,7 @@ CURRENT_PATH = os.getcwd() + '/'
 class MailMonitor():
 
 
-    def __init__(self, username, password, default_printer, verypdf_folder, allowed_domains, clean_attachments, imap_server, imap_port):
+    def __init__(self, username, password, default_printer, verypdf_folder, allowed_domains, clean_attachments, imap_server, imap_port, smtp_server, smtp_port):
         self.password = password
         self.username = username
         self.default_printer = default_printer
@@ -42,6 +42,8 @@ class MailMonitor():
         self.clean_attachments = clean_attachments
         self.imap_server = imap_server
         self.imap_port = imap_port
+        self.smtp_server = smtp_server
+        self.smtp_port = smtp_port
 
     def send_confirmation_mail(self, to, filelist):
         logger.info(f'Enviando correo de confirmación a {to}... desde {self.username}')
@@ -68,7 +70,7 @@ class MailMonitor():
         msg.attach(msg_body)
 
         try:
-            smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
+            smtpObj = smtplib.SMTP(self.smtp_server, self.smtp_port)
             smtpObj.ehlo()
             smtpObj.starttls()
             smtpObj.login(self.username, self.password)

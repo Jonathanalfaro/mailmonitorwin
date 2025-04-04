@@ -53,12 +53,14 @@ class Database:
             "provider_name",
             "imap_server",
             "imap_port",
+            "smtp_server",
+            "smtp_port"
         ]
         command = """
                     select gc.id, gc.verypdf_folder, gc.application_user, gc.application_password, gc.allowed_domains, gc.printer,gc.clean_attachments,
                     ac.email, ac.provider,
                     t.access_token, t.refresh_token, t.expires_at, t.scope,
-                    ap.name, ap.imap_server, ap.imap_port
+                    ap.name, ap.imap_server, ap.imap_port, ap.smtp_server, ap.smtp_port
                     from global_config gc
                     left join accounts ac on ac.id = gc.account_id
                     left join tokens t on t.account_id = gc.account_id
@@ -109,7 +111,7 @@ class Database:
 
     def get_oauth_providers(self):
         logger.debug('Getting oauth providers...')
-        providers_command = f"select op.id, op.name, op.imap_server, op.imap_port from oauth_providers op where active = 1"
+        providers_command = f"select op.id, op.name, op.imap_server, op.imap_port, op.smtp_server, op.smtp_port from oauth_providers op where active = 1"
         providers = self.connection.execute(providers_command).fetchall()
         return providers
 
@@ -222,7 +224,7 @@ class Database:
         ])
         self.insert_or_update_oauth_provider()
 
-    def insert_or_update_oauth_provider(self, name=None, server=None, port=None):
+    def insert_or_update_oauth_provider(self, name=None, server=None, port=None, smtp_server=None, smtp_port=None):
         # For google
         logger.debug('Inserting or updating oauth providers from file')
 
@@ -270,8 +272,8 @@ class Database:
         if name:
             try:
                 logger.debug('Updating provider info.')
-                command = f"UPDATE oauth_providers SET imap_server = ?, imap_port = ? WHERE name = ?"
-                self.connection.execute(command, [server, port, name])
+                command = f"UPDATE oauth_providers SET imap_server = ?, imap_port = ?, smtp_server = ?, smtp_port = ? WHERE name = ?"
+                self.connection.execute(command, [server, port, smtp_server, smtp_port, name])
                 self.connection.commit()
             except sqlite3.IntegrityError:
                 logger.error('Error updating provider data.')
